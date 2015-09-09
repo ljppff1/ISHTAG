@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:background="@color/white"
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp"
+    android:layout_height="wrap_content" >
+
+   <ImageView 
+       android:layout_width="40dp"
+       android:layout_height="40dp"
+       android:layout_centerVertical="true"
+       android:layout_marginLeft="15dp"
+       android:src="@drawable/t22"
+       android:id="@+id/mIv1"
+       />
+      <ImageView 
+       android:layout_width="45dp"
+       android:layout_height="45dp"
+       android:layout_alignParentRight="true"
+       android:scaleType="fitXY"
+       android:src="@drawable/t15"
+              android:layout_centerVertical="true"
+       android:layout_marginRight="10dp"
+       android:id="@+id/mIv2"
+       />
+      <LinearLayout 
+                 android:layout_toLeftOf="@id/mIv2"
+       android:layout_toRightOf="@id/mIv1"
+          android:orientation="vertical"
+          android:layout_height="wrap_content"
+          android:layout_width="fill_parent"
+          >
+   <TextView 
+       android:layout_width="fill_parent"
+       android:layout_height="wrap_content"
+       android:layout_centerVertical="true"
+       android:textSize="@dimen/smallb"
+       android:textColor="@color/black"
+       android:id="@+id/mTv1"
+       android:layout_marginLeft="10dp"
+       android:text="@string/a51"
+       />
+   <TextView 
+       android:layout_width="fill_parent"
+       android:layout_height="wrap_content"
+       android:layout_centerVertical="true"
+       android:textSize="@dimen/smalla1"
+       android:textColor="@color/aamy1"
+       android:layout_marginLeft="10dp"
+       android:text="@string/a51a"
+       />
+   <TextView 
+       android:layout_width="fill_parent"
+       android:layout_height="wrap_content"
+       android:layout_centerVertical="true"
+       android:textSize="@dimen/smalla"
+       android:textColor="@color/aamy1"
+       android:layout_marginTop="3dp"
+       android:layout_marginLeft="10dp"
+       android:text="@string/a51b"
+       />
+   </LinearLayout>
+</RelativeLayout>

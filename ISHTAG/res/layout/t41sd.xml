@@ -1,0 +1,187 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+        android:background="@color/white"
+    
+    android:orientation="vertical"
+    android:layout_height="fill_parent"
+     >
+     
+    <RelativeLayout 
+        android:layout_width="fill_parent"
+        android:layout_height="58dp"
+        android:background="@color/black"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        >
+        <RelativeLayout 
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="@color/white"
+            >
+            <ImageView 
+                android:paddingTop="4dp"
+                android:paddingBottom="4dp"
+                android:layout_width="50dp"
+                android:paddingLeft="10dp"
+                android:layout_height="50dp"
+                android:id="@+id/mIvt1"
+                android:layout_centerVertical="true"
+                android:src="@drawable/t26"
+                />
+            <TextView 
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/a59"
+                android:layout_toRightOf="@id/mIvt1"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="15dp"
+                android:textColor="@color/aamy1"
+                android:textSize="@dimen/smallc"
+                />
+        </RelativeLayout>
+    </RelativeLayout>
+    <LinearLayout 
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:background="@color/white"
+        >
+                
+               <RadioGroup
+                android:id="@+id/rg1"
+                android:layout_width="fill_parent"
+                android:layout_height="45.0dip"
+                android:orientation="horizontal" >
+
+                <RadioButton
+                    android:id="@+id/rb1"
+                    android:layout_width="0.0dip"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1.0"
+                    android:background="@drawable/radio_group_selector"
+                    android:button="@null"
+                    android:checked="true"
+                    
+                    android:gravity="center"
+                    android:text="@string/a60"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/smallb" />
+                <View 
+                    android:layout_width="1dp"
+                    android:layout_height="fill_parent"
+                    android:background="@color/black"
+                    />
+                <RadioButton
+                    android:id="@+id/rb2"
+                    android:layout_width="0.0dip"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1.0"
+                    android:background="@drawable/radio_group_selector"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:text="@string/a61"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/smallb" /> 
+                <View 
+                    android:layout_width="1dp"
+                    android:layout_height="fill_parent"
+                    android:background="@color/black"
+                    />
+                <RadioButton
+                    android:id="@+id/rb3"
+                    android:layout_width="0.0dip"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1.0"
+                    android:background="@drawable/radio_group_selector"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:text="@string/a62"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/smallb" /> 
+                </RadioGroup>
+        
+    
+                            <android.support.v4.view.ViewPager
+            android:id="@+id/vp1"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" />
+                
+                         
+              
+         
+    </LinearLayout>
+<RelativeLayout 
+    android:layout_width="fill_parent"
+    android:layout_height="55dp"
+    android:layout_gravity="bottom"
+    android:background="@color/white"
+    >
+    <LinearLayout 
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:layout_centerInParent="true"
+        android:orientation="horizontal"
+        >
+               <View 
+                        android:layout_width="0dp"
+            android:layout_weight="2.5"
+            android:layout_height="35dp"
+            
+            />
+                <ImageView 
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="fill_parent"
+            android:src="@drawable/t11"
+            android:id="@+id/mTIvt41f"
+            />
+                
+               <View 
+                        android:layout_width="0dp"
+            android:layout_weight="0.5"
+            android:layout_height="35dp"
+            
+            />
+                <ImageView 
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="fill_parent"
+            android:src="@drawable/t12"
+            android:id="@+id/mTIvt41g"
+            />   <View 
+                        android:layout_width="0dp"
+            android:layout_weight="0.5"
+            android:layout_height="35dp"
+            
+            />
+                              <ImageView 
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="fill_parent"
+            android:src="@drawable/t13"
+            android:id="@+id/mTIvt41h1"
+            />   <View 
+                        android:layout_width="0dp"
+            android:layout_weight="0.5"
+            android:layout_height="35dp"
+            
+            />
+                              <ImageView 
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="fill_parent"
+            android:src="@drawable/t14"
+            android:id="@+id/mTIvt41i"
+            />  <View 
+                        android:layout_width="0dp"
+            android:layout_weight="2.5"
+            android:layout_height="35dp"
+            
+            />
+                              
+    </LinearLayout>
+</RelativeLayout>
+    
+</LinearLayout>

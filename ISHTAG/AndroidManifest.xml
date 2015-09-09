@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.ishtag"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="21" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/t19"
+        android:label="@string/app_name"
+       >
+        <activity
+            android:name="com.example.ishtag.LoginActivity"
+              android:theme="@style/activityTheme" 
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity 
+            android:name="com.example.ishtag.ChoiceWhat2Activity"
+            ></activity>
+        <activity 
+            android:name="com.example.ishtag.RegisterActivity"
+            ></activity>
+        <activity 
+            android:name="com.example.ishtag.Register1Activity"
+            ></activity>
+        <activity 
+            android:name="com.example.ishtag.TZ4_1Activity"
+            ></activity>
+        <activity 
+            android:name="com.example.ishtag.TZ4_2Activity"
+            ></activity>
+        <activity 
+            android:name="com.example.ishtag.TZ4_1aActivity"
+            ></activity>
+                <activity 
+            android:name="com.example.ishtag.TZ4_1bActivity"
+            ></activity>
+                <activity 
+            android:name="com.example.ishtag.TZ4_1cActivity"
+            ></activity>
+                        <activity 
+            android:name="com.example.ishtag.TZ4_1dActivity"
+            ></activity>
+                        <activity 
+            android:name="com.example.ishtag.TZ4_1eActivity"
+            ></activity>
+                        <activity 
+            android:name="com.example.ishtag.TZ4_1sActivity"
+            ></activity>
+                        <activity 
+            android:name="com.example.ishtag.TZ4_1sdActivity"
+            ></activity>
+                        <activity 
+            android:name="com.example.ishtag.TZ4_1a1Activity"
+            ></activity>
+                        <activity 
+            android:name="com.example.ishtag.TZ4_1pActivity"
+            ></activity>
+                        <activity 
+            android:name="com.example.ishtag.FabuTuPianActivity"
+            ></activity>
+                        <activity 
+            android:name="com.example.ishtag.TZ4_2cActivity"
+            ></activity>
+                        <activity 
+            android:name="com.example.ishtag.TZ4_2bActivity"
+            ></activity>
+                        <activity 
+            android:name="com.example.ishtag.TZ4_2dActivity"
+            ></activity>
+                        <activity 
+            android:name="com.example.ishtag.TZ4_2aActivity"
+            ></activity>
+                        <activity 
+            android:name="com.example.ishtag.TZ4_2eActivity"
+            ></activity>
+                        <activity 
+            android:name="com.example.ishtag.TZ4_2sActivity"
+            ></activity>
+                        <activity 
+            android:name="com.example.ishtag.TZ4_2sdActivity"
+            ></activity>
+                        <activity 
+            android:name="com.example.ishtag.TZ4_2pActivity"
+            ></activity>
+                        <activity 
+            android:name="com.example.ishtag.TZ4_2a1Activity"
+            ></activity>
+                        
+        </application>
+    <!-- 在sd卡中创建与删除文件权限 -->
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <!-- 向SD卡写入数据权限 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+ <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    
+</manifest>

@@ -1,0 +1,67 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:layout_height="fill_parent"
+     >
+<ImageView 
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/paddingh1"
+        android:id="@+id/mIvwhat"
+        android:scaleType="fitXY"
+        android:src="@drawable/t1"
+        />
+
+    <LinearLayout 
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+                android:layout_marginTop="30dp"
+        
+        android:orientation="horizontal"
+        >
+        <View 
+            android:layout_weight="1"
+            android:layout_height="1dp"
+            android:layout_width="0dp"
+            />
+            <LinearLayout 
+            android:layout_width="0dp"
+            android:layout_weight="2"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+        
+        <Button 
+                        android:layout_width="fill_parent"
+            android:background="@color/black"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:layout_marginTop="40dp"
+            android:id="@+id/mBtnCW1"
+            android:gravity="center"
+            android:layout_height="48dp"
+            android:text="@string/a4"
+            />
+                <Button 
+                        android:layout_width="fill_parent"
+            android:background="@color/black"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:layout_marginTop="40dp"
+                        android:id="@+id/mBtnCW2"
+            
+            android:gravity="center"
+            android:layout_height="48dp"
+            android:text="@string/a5"
+            />
+        
+        </LinearLayout>
+        <View 
+            android:layout_weight="1"
+            android:layout_height="1dp"
+            android:layout_width="0dp"
+            />
+        </LinearLayout>    
+
+</LinearLayout>

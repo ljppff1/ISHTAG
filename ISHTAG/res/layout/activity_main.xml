@@ -1,0 +1,68 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity" >
+
+   
+    <FrameLayout
+        android:id="@+id/main_framelayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" >
+    </FrameLayout>
+
+    <LinearLayout
+        android:id="@+id/main_tab_bar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:padding="3dp"
+        android:background="@android:color/white"
+        android:gravity="center"
+        android:orientation="horizontal" >
+        <View 
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            />
+        <ImageView
+            android:id="@+id/mIvwhat1"
+            style="@style/main_tab_item"
+            android:drawablePadding="0dp"
+            android:checked="true"
+            android:background="@drawable/btn1"
+          />
+
+        <ImageView
+            android:id="@+id/mIvwhat2"
+                        android:drawablePadding="0dp"
+            
+            style="@style/main_tab_item"
+            android:background="@drawable/btn2"
+        />
+        <ImageView
+            android:id="@+id/mIvwhat3"
+                        android:drawablePadding="0dp"
+            
+            style="@style/main_tab_item"
+            android:background="@drawable/btn3"
+            />
+
+        <ImageView
+            android:id="@+id/mIvwhat4"
+            style="@style/main_tab_item"
+            android:background="@drawable/btn4"
+                        android:drawablePadding="0dp"
+            
+      />
+
+                <View 
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            />
+        
+    </LinearLayout>
+
+</LinearLayout>
