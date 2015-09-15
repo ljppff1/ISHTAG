@@ -32,6 +32,7 @@ public class TZ4_1dActivity extends Activity {
 	public static String SDPATH = Environment.getExternalStorageDirectory()
 			+ "/ISHTAG/";
 	private File tempFile1;
+	private ImageView mTIvt41i;
 	private static final int TAKE_PICTURE = 0x000001;
 
 	@Override
@@ -63,6 +64,8 @@ public class TZ4_1dActivity extends Activity {
 		mTIvt41h1.setOnClickListener(listener);
 		mTIvt41g =(ImageView)this.findViewById(R.id.mTIvt41g);
 		mTIvt41g.setOnClickListener(listener);
+		mTIvt41i =(ImageView)this.findViewById(R.id.mTIvt41i);
+		mTIvt41i.setOnClickListener(listener);
 
 	}
 
@@ -71,6 +74,12 @@ public class TZ4_1dActivity extends Activity {
 		@Override
 		public void onClick(View v) {
 			switch (v.getId()) {
+			case R.id.mTIvt41i:
+				
+				startActivity(new Intent(getApplicationContext(), TZ4_1iActivity.class));
+
+				break;
+
 			case R.id.mBtnRegister:
 				//startActivity(new Intent(getApplicationContext(), ChoiceWhat2Activity.class));
 				break;

@@ -290,7 +290,7 @@ public class TZ4_1pActivity extends Activity {
 /*    	  if (!destDir.exists()) {
     	   destDir.mkdirs();
     	  }
-*/    	  makeRootDirectory(path);
+*/    	  makeRootDirectory(SDPATH);
     	  File f = new File(SDPATH+"pic"+newDate+".png");
     	  try {
 	    	   FileOutputStream out = new FileOutputStream(f);

@@ -34,6 +34,7 @@
          <string name="a26">--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</string>
          <string name="a27">ADAM RILEY</string>
          <string name="a28">JSOPPRESSATA PICCANTE</string>
+         <string name="a281">]</string>
          <string name="a29">\@MOTORINO</string>
          <string name="a30">with Raffaela Bichiri and 3 other</string>
          <string name="a31a">TOMATO SAUCE/ RCE DI LATTE/SPICY SOPPRESSATA/FRESHCHIES/GARUC/OREGANO/PEOCRNO/EV.OLIVE OL </string>
@@ -67,8 +68,8 @@
 <string name="a57">EXPLORE ...</string>
 <string name="a58">ISHTAGS RECOMMENDED FOR YOU</string>
 <string name="a59">CHEESEBURGER</string>
-<string name="a60">ISHTAGS</string>
-<string name="a61">ISHTAGGERS</string>
+<string name="a60">] ISHTAGS</string>
+<string name="a61">] ISHTAGGERS</string>
 <string name="a62">PLACES</string>
 <string name="a63">DJIBOUTLL\'S DISHTAGS</string>
 <string name="a64">FILTERS</string>
@@ -96,5 +97,23 @@
 <string name="a85">MAINS</string>
 <string name="a86">DESSERTS</string>
 <string name="a87">DRINKS</string>
-
+<string name="a88">Selection date Please</string>
+<string name="a89">Sure</string>
+<string name="a90">PLEASE ENTER USERNAME</string>
+<string name="a90a">PLEASE ENTER RESTAURANT NAME</string>
+<string name="a91">PLEASE ENTER EMAIL</string>
+<string name="a92">TWO INPUT EMAIL DIFFERENT</string>
+<string name="a93">TWO INPUT PASSWORD DIFFERENT</string>
+<string name="a94">PLEASE ENTER RE-EMAIL</string>
+<string name="a95">PLEASE ENTER NEW PASSWORD</string>
+<string name="a951">PLEASE ENTER PASSWORD</string>
+<string name="a96">PLEASE ENTER RE-ENTER PASSWORD</string>
+<string name="a97">PLEASE ENTER BIRTHDAY</string>
+<string name="a98">PLEASE ENTER BRANCE</string>
+<string name="a99"></string>
+        <string name="toast">And then press an exit procedure</string>
+              <string name="a101">REVISE</string>
+              <string name="a102">SURE</string>
+              <string name="a103">PLEASE WRITE A CAPTION</string>
+              
 </resources>

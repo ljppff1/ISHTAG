@@ -13,6 +13,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -37,6 +38,8 @@ public class TZ4_1Activity extends Activity {
 	private ImageView mTIvt41g;
 	public static String SDPATH = Environment.getExternalStorageDirectory()
 			+ "/ISHTAG/";
+	private long exitTime = 0;
+	private ImageView mTIvt41i;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +72,8 @@ public class TZ4_1Activity extends Activity {
 		mTIvt41f.setOnClickListener(listener);
 		mTIvt41g =(ImageView)this.findViewById(R.id.mTIvt41g);
 		mTIvt41g.setOnClickListener(listener);
+		mTIvt41i =(ImageView)this.findViewById(R.id.mTIvt41i);
+		mTIvt41i.setOnClickListener(listener);
 		
 		
 	}
@@ -78,6 +83,11 @@ public class TZ4_1Activity extends Activity {
 		@Override
 		public void onClick(View v) {
 			switch (v.getId()) {
+			case R.id.mTIvt41i:
+				
+				startActivity(new Intent(getApplicationContext(), TZ4_1iActivity.class));
+
+				break;
 			case R.id.mBtnRegister:
 				//startActivity(new Intent(getApplicationContext(), ChoiceWhat2Activity.class));
 				break;
@@ -130,8 +140,23 @@ public class TZ4_1Activity extends Activity {
 
 		}
 	};
+	
+/*	@Override
+	public boolean dispatchKeyEvent(KeyEvent event) {
+		if(event.getAction() == KeyEvent.ACTION_DOWN && event.getKeyCode() == KeyEvent.KEYCODE_BACK){
+			if((System.currentTimeMillis() - exitTime) > 2000){
+				Toast.makeText(getApplicationContext(), R.string.toast, 1).show();
+				exitTime = System.currentTimeMillis();
+				}else{
+					finish();
+					android.os.Process.killProcess(android.os.Process.myPid());
+				}
+			return true;
+			}
+		return super.dispatchKeyEvent(event);
+	}
 
-	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+*/	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		switch (requestCode) {
 		case TAKE_PICTURE:
 			//	Bitmap bitmap = BitmapFactory.decodeFile(tempFile1.getPath());

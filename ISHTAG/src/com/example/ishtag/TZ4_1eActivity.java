@@ -2,12 +2,31 @@ package com.example.ishtag;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import com.example.fragment.Fragment1a;
 import com.example.ishtag.TZ4_1bActivity.Holder;
 import com.example.ishtag.TZ4_1bActivity.Myadapter;
+import com.lidroid.xutils.HttpUtils;
+import com.lidroid.xutils.exception.HttpException;
+import com.lidroid.xutils.http.RequestParams;
+import com.lidroid.xutils.http.ResponseInfo;
+import com.lidroid.xutils.http.callback.RequestCallBack;
+import com.lidroid.xutils.http.client.HttpRequest;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -23,7 +42,9 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class TZ4_1eActivity extends Activity {
 
@@ -38,11 +59,17 @@ public class TZ4_1eActivity extends Activity {
 	private ImageView mTIvt41h1;
 	private ImageView mTIvt41f;
 	private ImageView mTIvt41g;
+	private DisplayImageOptions options;
+	private ArrayList<Data> mDataList_origin=new ArrayList<TZ4_1eActivity.Data>();
+	private ArrayList<Data> mDataList=new ArrayList<TZ4_1eActivity.Data>();
+	protected ImageLoader imageLoader = ImageLoader.getInstance();
 
 
 	public static String SDPATH = Environment.getExternalStorageDirectory()
 			+ "/ISHTAG/";
 	private File tempFile1;
+	private ProgressBar progressBar_sale;
+	private ImageView mTIvt41i;
 	private static final int TAKE_PICTURE = 0x000001;
 
 	@Override
@@ -59,6 +86,9 @@ public class TZ4_1eActivity extends Activity {
 
 
 	private void initView() {
+		progressBar_sale =(ProgressBar)this.findViewById(R.id.progressBar_sale);
+		progressBar_sale.setVisibility(View.GONE);
+
 		mLv1 =(ListView)this.findViewById(R.id.mLv1);
 	       myadapter = new Myadapter();
 	       
@@ -79,10 +109,104 @@ public class TZ4_1eActivity extends Activity {
 			mTIvt41h1.setOnClickListener(listener);
 			mTIvt41g =(ImageView)this.findViewById(R.id.mTIvt41g);
 			mTIvt41g.setOnClickListener(listener);
+			mTIvt41i =(ImageView)this.findViewById(R.id.mTIvt41i);
+			mTIvt41i.setOnClickListener(listener);
 
 
+	}
 
-	}class Holder{
+private void initData() {
+	downloadsearch("0");
+}
+private void initImageLoaderOptions() {
+	options = new DisplayImageOptions.Builder()
+			.showImageForEmptyUri(R.drawable.ic_launcher)
+			.cacheInMemory()
+			.cacheOnDisc().displayer(new FadeInBitmapDisplayer(2000))
+			.bitmapConfig(Bitmap.Config.RGB_565).build();
+}
+
+public void downloadsearch(String area11){
+	 RequestParams params = new RequestParams();
+   List<NameValuePair> nameValuePairs=new ArrayList<NameValuePair>(10);
+   nameValuePairs.add(new BasicNameValuePair("CategoryID", "1"));
+   params.addBodyParameter(nameValuePairs);
+   HttpUtils http = new HttpUtils();
+   http.send(HttpRequest.HttpMethod.POST,
+  		 "http://josie.i3.com.hk/FG/json/article_list.php",
+           params,
+           new RequestCallBack<String>() {
+
+				@Override
+				public void onFailure(HttpException arg0, String arg1) {
+					// TODO Auto-generated method stub
+					
+				}
+
+				@Override
+				public void onSuccess(ResponseInfo<String> arg0) {
+					JSONObject jsonObject;
+					try {
+						jsonObject = new JSONObject(arg0.result);
+						String string_code = jsonObject.getString("code");
+						 int  num_code=Integer.valueOf(string_code);
+						 if (num_code==1) {
+							 //保存到本地
+							 mDataList_origin.clear();
+							 JSONArray array = jsonObject.getJSONArray("data");
+							  for (int i = 0; i < array.length(); i++) {
+								  
+								  Data  data=new Data();
+								  
+								 JSONObject jsonObject2 = array.getJSONObject(i);
+								 data.ID= jsonObject2.getString("ArticleID");
+								 data.Name= jsonObject2.getString("ArticleTitle");
+								 data.StreetName = jsonObject2.getString("ArticleRemark");
+								 data.CoverPic=jsonObject2.getString("ArticlePhoto");
+								 mDataList_origin.add(data);
+								 
+		                          data.toString();						 
+							}
+							  mDataList.clear();
+							  mDataList.addAll(mDataList_origin);
+								progressBar_sale.setVisibility(View.GONE);
+							//  initListView();
+						}
+						 else {
+							//new AlertInfoDialog(SaleActivity.this).show();
+						}
+					} catch (JSONException e) {
+						 if(mDataList.isEmpty())
+						//new Dialog_noInternet(SaleActivity.this).show();
+							 Toast.makeText(getApplicationContext(), "暫無相關內容", 0).show();
+						e.printStackTrace();
+					}					
+				}
+   });
+}
+class Data{
+	String   ID;
+	String   Name;
+	String   StreetName;
+	String   AreaGross;
+	String   AreaNet;
+	String   SellingPrice;
+	String   RentPrice;
+	String   CoverPic;
+	@Override
+	public String toString() {
+		return "Data [ID=" + ID + ", Name=" + Name + ", StreetName="
+				+ StreetName + ", AreaGross=" + AreaGross + ", AreaNet="
+				+ AreaNet + ", SellingPrice=" + SellingPrice
+				+ ", RentPrice=" + RentPrice + ", CoverPic=" + CoverPic
+				+ "]";
+	}
+	
+}
+
+	
+	
+	class Holder{
 		TextView mTvri10;
 		ImageView mIv1,mIv2;
 	}
@@ -152,6 +276,12 @@ public class TZ4_1eActivity extends Activity {
 		@Override
 		public void onClick(View v) {
 			switch (v.getId()) {
+			case R.id.mTIvt41i:
+				
+				startActivity(new Intent(getApplicationContext(), TZ4_1iActivity.class));
+
+				break;
+
 			case R.id.mBtnRegister:
 				//startActivity(new Intent(getApplicationContext(), ChoiceWhat2Activity.class));
 				break;

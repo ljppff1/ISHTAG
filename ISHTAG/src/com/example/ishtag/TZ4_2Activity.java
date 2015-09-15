@@ -3,12 +3,14 @@ package com.example.ishtag;
 import java.io.File;
 import java.io.IOException;
 
+
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -16,6 +18,7 @@ import android.view.Window;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 public class TZ4_2Activity extends Activity {
 
@@ -32,6 +35,7 @@ public class TZ4_2Activity extends Activity {
 	public static String SDPATH = Environment.getExternalStorageDirectory()
 			+ "/ISHTAG/";
 	private File tempFile1;
+	private ImageView mTIvt41i;
 	private static final int TAKE_PICTURE = 0x000001;
 
 	@Override
@@ -53,6 +57,8 @@ public class TZ4_2Activity extends Activity {
 		mTIvt41h1.setOnClickListener(listener);
 		mTIvt41g =(ImageView)this.findViewById(R.id.mTIvt41g);
 		mTIvt41g.setOnClickListener(listener);
+		mTIvt41i =(ImageView)this.findViewById(R.id.mTIvt41i);
+		mTIvt41i.setOnClickListener(listener);
 		
 		
 		mTIvt41c =(ImageView)this.findViewById(R.id.mTIvt41c);
@@ -73,6 +79,9 @@ public class TZ4_2Activity extends Activity {
 		@Override
 		public void onClick(View v) {
 			switch (v.getId()) {
+			case R.id.mTIvt41i:
+				startActivity(new Intent(getApplicationContext(), TZ4_2iActivity.class));
+				break;
 			case R.id.mBtnRegister:
 				//startActivity(new Intent(getApplicationContext(), ChoiceWhat2Activity.class));
 				break;
@@ -107,8 +116,23 @@ public class TZ4_2Activity extends Activity {
 			}
 		}
 	};
+	private long exitTime=0;
+/*	@Override
+	public boolean dispatchKeyEvent(KeyEvent event) {
+		if(event.getAction() == KeyEvent.ACTION_DOWN && event.getKeyCode() == KeyEvent.KEYCODE_BACK){
+			if((System.currentTimeMillis() - exitTime) > 2000){
+				Toast.makeText(getApplicationContext(), R.string.toast, 1).show();
+				exitTime = System.currentTimeMillis();
+				}else{
+					finish();
+					android.os.Process.killProcess(android.os.Process.myPid());
+				}
+			return true;
+			}
+		return super.dispatchKeyEvent(event);
+	}
 
-	private void photo() {
+*/	private void photo() {
 		Intent openCameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
 		String fileName = String.valueOf(System.currentTimeMillis());
 		if (!com.example.utils.FileUtils.isFileExist("")) {

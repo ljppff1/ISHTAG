@@ -1,8 +1,14 @@
+       <RelativeLayout 
+                   android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+           
+           >
+   
     <ScrollView 
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:fillViewport="true"
-        xmlns:android="http://schemas.android.com/apk/res/android"
         >
 
 <LinearLayout 
@@ -58,6 +64,7 @@
             android:layout_width="fill_parent"
                       android:textColor="@color/black"
             android:textSize="20sp"
+            android:id="@+id/mEt1"
             android:gravity="center"
             android:layout_height="wrap_content"
             />
@@ -83,6 +90,8 @@
             android:textSize="20sp"
             android:gravity="center"
             android:layout_height="wrap_content"
+                        android:id="@+id/mEt2"
+            
             />
         </RelativeLayout>
         <TextView 
@@ -105,6 +114,8 @@
                       android:textColor="@color/black"
             android:textSize="20sp"
             android:gravity="center"
+                        android:id="@+id/mEt3"
+            
             android:layout_height="wrap_content"
             />
         </RelativeLayout>
@@ -127,7 +138,10 @@
             android:layout_width="fill_parent"
                       android:textColor="@color/black"
             android:textSize="20sp"
+                        android:id="@+id/mEt4"
+            
             android:gravity="center"
+                        android:password="true"
             android:layout_height="wrap_content"
             />
         </RelativeLayout>
@@ -150,6 +164,9 @@
             android:layout_width="fill_parent"
                       android:textColor="@color/black"
             android:textSize="20sp"
+                        android:password="true"
+                        android:id="@+id/mEt5"
+            
             android:gravity="center"
             android:layout_height="wrap_content"
             />
@@ -174,6 +191,8 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:textSize="20sp"
+            android:id="@+id/mTvre6"
+                        android:paddingLeft="10dp"
             
             />
         </RelativeLayout>
@@ -182,11 +201,14 @@
                    android:layout_width="fill_parent"
                    android:layout_height="wrap_content"
                    android:orientation="horizontal"
+                   android:id="@+id/mRg1"
                    >
                    <RadioButton 
                        android:layout_width="0dp"
                        android:layout_height="wrap_content"
                        android:layout_weight="1"
+                       android:checked="true"
+                       android:id="@+id/mRb1"
                        android:textColor="@color/aamy1"
                        android:text="@string/a11"
                        />
@@ -195,6 +217,7 @@
                        android:layout_height="wrap_content"
                        android:layout_weight="1"
                                               android:textColor="@color/aamy1"
+                                              android:id="@+id/mRb2"
                        
                        android:text="@string/a12"
                        />
@@ -205,6 +228,7 @@
             android:background="@color/black"
             android:textColor="@color/white"
             android:textSize="20sp"
+           android:layout_marginBottom="30dp"
             android:layout_marginTop="40dp"
             android:id="@+id/mBtnRegister"
             android:gravity="center"
@@ -218,6 +242,13 @@
             android:layout_width="0dp"
             />
         </LinearLayout>    
-
 </LinearLayout>
 </ScrollView>
+            <ProgressBar
+            android:id="@+id/progressBar_sale"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true" />
+        
+        </RelativeLayout>

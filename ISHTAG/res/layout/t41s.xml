@@ -49,16 +49,39 @@
         android:background="@color/white"
         >
                 
+        <RelativeLayout 
+            android:layout_width="fill_parent"
+            android:layout_marginTop="15dp"
+            android:layout_height="wrap_content"
+            >
+            <RelativeLayout 
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                
+                android:layout_centerInParent="true"
+                >
+                             <TextView 
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/a281"
+                android:gravity="top"
+                android:id="@+id/mTvattep"
+               android:textSize="@dimen/smalle"
+                android:textColor="@color/black"
+                />
+                
         <TextView 
-        android:layout_width="fill_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:layout_marginTop="15dp"
+       android:layout_toRightOf="@id/mTvattep"
+                android:layout_marginLeft="@dimen/ma1"
         android:text="@string/a58"
         android:textSize="@dimen/smallc"
         android:textColor="@color/black"
         />
-        
+        </RelativeLayout>
+        </RelativeLayout>
         <TextView 
         android:layout_width="fill_parent"
         android:layout_height="15dp"

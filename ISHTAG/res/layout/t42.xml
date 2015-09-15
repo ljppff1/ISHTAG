@@ -135,10 +135,23 @@
                                     android:layout_marginLeft="10dp"
         
             >
+                         <TextView 
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/a281"
+                android:gravity="top"
+                android:id="@+id/mTvattep"
+               android:textSize="@dimen/smalle"
+                android:textColor="@color/black"
+                />
+            
         <TextView 
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/a36"
+                                android:layout_marginLeft="@dimen/ma1"
+                android:layout_toRightOf="@id/mTvattep"
+                
                 android:id="@+id/mTIvt41h"
                 android:textColor="@color/black"
                 android:textSize="@dimen/smallb"

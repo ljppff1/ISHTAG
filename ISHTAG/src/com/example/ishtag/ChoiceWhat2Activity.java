@@ -10,7 +10,7 @@ import android.view.Window;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 
-public class ChoiceWhat2Activity extends Activity {
+public class ChoiceWhat2Activity extends BaseActivity {
 
 	private Button mBtnCW2;
 	private Button mBtnCW1;

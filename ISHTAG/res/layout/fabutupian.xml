@@ -110,6 +110,7 @@
               android:paddingLeft="5dp"
               android:paddingRight="5dp"
               android:lines="3"
+              android:id="@+id/mEt2"
               android:background="@drawable/et1"
               
               />
@@ -157,7 +158,7 @@
               android:layout_height="42dp"
                             android:paddingLeft="5dp"
               android:paddingRight="5dp"
-              
+              android:id="@+id/mEt3"
               android:textColor="@color/black"
               android:background="@drawable/et1"
               />
@@ -191,6 +192,7 @@
               android:textColor="@color/black"
                             android:paddingLeft="5dp"
               android:paddingRight="5dp"
+                            android:id="@+id/mEt4"
               
               android:background="@drawable/et1"
               />
@@ -288,6 +290,7 @@
        android:layout_height="35dp"
        android:background="@drawable/t44"
        android:layout_marginTop="58dp"
+       android:id="@+id/mBtnSure"
        android:layout_centerInParent="true"
        /></RelativeLayout>
        </LinearLayout>

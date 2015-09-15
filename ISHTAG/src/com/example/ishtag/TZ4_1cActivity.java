@@ -8,6 +8,7 @@ import com.example.ishtag.TZ4_1bActivity.Myadapter;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -43,6 +44,8 @@ public class TZ4_1cActivity extends Activity {
 	public static String SDPATH = Environment.getExternalStorageDirectory()
 			+ "/ISHTAG/";
 	private File tempFile1;
+	private View mTIvt41i;
+	private String UserID;
 	private static final int TAKE_PICTURE = 0x000001;
 
 	@Override
@@ -51,7 +54,9 @@ public class TZ4_1cActivity extends Activity {
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 
 		setContentView(R.layout.t41c);
-		
+		SharedPreferences mySharedPreferences= getSharedPreferences("USER", Activity.MODE_PRIVATE); 
+		UserID=	mySharedPreferences.getString("UserID", ""); 
+
 		initView();
 		
 		
@@ -80,6 +85,8 @@ public class TZ4_1cActivity extends Activity {
 			mTIvt41h1.setOnClickListener(listener);
 			mTIvt41g =(ImageView)this.findViewById(R.id.mTIvt41g);
 			mTIvt41g.setOnClickListener(listener);
+			mTIvt41i =(ImageView)this.findViewById(R.id.mTIvt41i);
+			mTIvt41i.setOnClickListener(listener);
 
 	}class Holder{
 		TextView mTvri10;
@@ -153,6 +160,12 @@ public class TZ4_1cActivity extends Activity {
 		@Override
 		public void onClick(View v) {
 			switch (v.getId()) {
+			case R.id.mTIvt41i:
+				
+				startActivity(new Intent(getApplicationContext(), TZ4_1iActivity.class));
+
+				break;
+
 			case R.id.mBtnRegister:
 				//startActivity(new Intent(getApplicationContext(), ChoiceWhat2Activity.class));
 				break;
