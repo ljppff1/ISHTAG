@@ -21,7 +21,9 @@
               <string name="a13">READY TO DISHTAG!</string>
               <string name="a14">保存</string>
               <string name="a15">tag the dish</string>
+              <string name="a151">dish category</string>
               <string name="a16">write a caption</string>
+              <string name="a16a">dishname</string>
               <string name="a17">TAG FRIENDS</string>
               <string name="a18">TAG RESTAURANT</string>
          <string name="a19">RESTAURANT NAME</string>
@@ -74,8 +76,10 @@
 <string name="a63">DJIBOUTLL\'S DISHTAGS</string>
 <string name="a64">FILTERS</string>
 <string name="a65">TAG FRIENDS</string>
+<string name="a65a">DISH DETAILS</string>
 <string name="a66">RAFFAELLA BICHIRI</string>
 <string name="a67">TAG RESTAURANT</string>
+<string name="a67a">PRICE</string>
 <string name="a68">MOTORINO</string>
 <string name="a69">SHARE...</string>
 <string name="a70">FOLLOWERS</string>
@@ -115,5 +119,7 @@
               <string name="a101">REVISE</string>
               <string name="a102">SURE</string>
               <string name="a103">PLEASE WRITE A CAPTION</string>
+              <string name="a103a">PLEASE WRITE DISH DETAILS</string>
+              <string name="a104">Picture being loaded</string>
               
 </resources>

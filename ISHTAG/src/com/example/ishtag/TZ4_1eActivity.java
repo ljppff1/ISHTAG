@@ -14,6 +14,7 @@ import org.json.JSONObject;
 import com.example.fragment.Fragment1a;
 import com.example.ishtag.TZ4_1bActivity.Holder;
 import com.example.ishtag.TZ4_1bActivity.Myadapter;
+import com.example.ishtag.TZ4_1cActivity.Data;
 import com.lidroid.xutils.HttpUtils;
 import com.lidroid.xutils.exception.HttpException;
 import com.lidroid.xutils.http.RequestParams;
@@ -26,6 +27,7 @@ import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
@@ -70,6 +72,7 @@ public class TZ4_1eActivity extends Activity {
 	private File tempFile1;
 	private ProgressBar progressBar_sale;
 	private ImageView mTIvt41i;
+	private String UserID;
 	private static final int TAKE_PICTURE = 0x000001;
 
 	@Override
@@ -78,7 +81,9 @@ public class TZ4_1eActivity extends Activity {
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 
 		setContentView(R.layout.t41e);
-		
+		SharedPreferences mySharedPreferences= getSharedPreferences("USER", Activity.MODE_PRIVATE); 
+		UserID=	mySharedPreferences.getString("UserID", ""); 
+
 		initView();
 		
 		
@@ -88,11 +93,7 @@ public class TZ4_1eActivity extends Activity {
 	private void initView() {
 		progressBar_sale =(ProgressBar)this.findViewById(R.id.progressBar_sale);
 		progressBar_sale.setVisibility(View.GONE);
-
-		mLv1 =(ListView)this.findViewById(R.id.mLv1);
-	       myadapter = new Myadapter();
-	       
-	       mLv1.setAdapter(myadapter);
+       initData();
 			mTIvt41d =(ImageView)this.findViewById(R.id.mTIvt41d);
 			mTIvt41d.setOnClickListener(listener);
 			mTIvt41b =(ImageView)this.findViewById(R.id.mTIvt41b);
@@ -116,6 +117,8 @@ public class TZ4_1eActivity extends Activity {
 	}
 
 private void initData() {
+	progressBar_sale.setVisibility(View.VISIBLE);
+
 	downloadsearch("0");
 }
 private void initImageLoaderOptions() {
@@ -129,13 +132,15 @@ private void initImageLoaderOptions() {
 public void downloadsearch(String area11){
 	 RequestParams params = new RequestParams();
    List<NameValuePair> nameValuePairs=new ArrayList<NameValuePair>(10);
-   nameValuePairs.add(new BasicNameValuePair("CategoryID", "1"));
+   nameValuePairs.add(new BasicNameValuePair("UserID", UserID));
    params.addBodyParameter(nameValuePairs);
    HttpUtils http = new HttpUtils();
    http.send(HttpRequest.HttpMethod.POST,
-  		 "http://josie.i3.com.hk/FG/json/article_list.php",
+  		 "http://josie.i3.com.hk/dishtag/json/m_my_restaurants.php",
            params,
            new RequestCallBack<String>() {
+
+				private String msg;
 
 				@Override
 				public void onFailure(HttpException arg0, String arg1) {
@@ -149,6 +154,8 @@ public void downloadsearch(String area11){
 					try {
 						jsonObject = new JSONObject(arg0.result);
 						String string_code = jsonObject.getString("code");
+						 msg = jsonObject.getString("msg");
+
 						 int  num_code=Integer.valueOf(string_code);
 						 if (num_code==1) {
 							 //保存到本地
@@ -159,31 +166,38 @@ public void downloadsearch(String area11){
 								  Data  data=new Data();
 								  
 								 JSONObject jsonObject2 = array.getJSONObject(i);
-								 data.ID= jsonObject2.getString("ArticleID");
-								 data.Name= jsonObject2.getString("ArticleTitle");
-								 data.StreetName = jsonObject2.getString("ArticleRemark");
-								 data.CoverPic=jsonObject2.getString("ArticlePhoto");
+								 data.ID= jsonObject2.getString("RID");
+								 data.Name= jsonObject2.getString("RName");
 								 mDataList_origin.add(data);
 								 
 		                          data.toString();						 
 							}
 							  mDataList.clear();
 							  mDataList.addAll(mDataList_origin);
-								progressBar_sale.setVisibility(View.GONE);
-							//  initListView();
+									progressBar_sale.setVisibility(View.GONE);
+							  initListView();
 						}
 						 else {
-							//new AlertInfoDialog(SaleActivity.this).show();
+							 Toast.makeText(getApplicationContext(), msg, 0).show();
+								progressBar_sale.setVisibility(View.GONE);
 						}
 					} catch (JSONException e) {
 						 if(mDataList.isEmpty())
-						//new Dialog_noInternet(SaleActivity.this).show();
 							 Toast.makeText(getApplicationContext(), "暫無相關內容", 0).show();
 						e.printStackTrace();
 					}					
 				}
+
    });
 }
+	private void initListView() {
+	mLv1 =(ListView)this.findViewById(R.id.mLv1);
+    myadapter = new Myadapter();
+    
+    mLv1.setAdapter(myadapter);
+	
+}
+
 class Data{
 	String   ID;
 	String   Name;
@@ -210,9 +224,11 @@ class Data{
 		TextView mTvri10;
 		ImageView mIv1,mIv2;
 	}
+	private String RID;
+
 	class  Myadapter extends   BaseAdapter{
 		@Override
-		public View getView(int position, View convertView, ViewGroup parent) {
+		public View getView(final int position, View convertView, ViewGroup parent) {
 			        
 			
 			Holder holder = null;
@@ -225,14 +241,24 @@ class Data{
 				holder.mTvri12 =(TextView)convertView.findViewById(R.id.mTvri12);
 				holder.imageView =(ImageView)convertView.findViewById(R.id.iv_listview_rent_pic);
 	*/							holder.mIv1 =(ImageView)convertView.findViewById(R.id.mIv1);
-           	holder.mIv2 =(ImageView)convertView.findViewById(R.id.mIv2);
-  
+   	holder.mIv2 =(ImageView)convertView.findViewById(R.id.mIv2);
+   	holder.mTvri10 =(TextView)convertView.findViewById(R.id.mTvw1);
+           	
 				convertView.setTag(holder);
 
 			}else{
 				holder =(Holder)convertView.getTag();
 			}
-			
+			holder.mIv2.setOnClickListener(new OnClickListener() {
+				
+
+				@Override
+				public void onClick(View v) {
+					RID=mDataList.get(position).ID;
+					initData1();
+				}
+			});
+			holder.mTvri10.setText(mDataList.get(position).Name);
 		/*	holder.mTvri10.setText(mDataList.get(position).Name);
 			holder.mTvri11.setText(mDataList.get(position).StreetName);
 			initImageLoaderOptions();
@@ -258,7 +284,7 @@ class Data{
 		@Override
 		public int getCount() {
 			// TODO Auto-generated method stub
-			return 16;
+			return mDataList.size();
 		}
 		@Override
 		public Object getItem(int position) {
@@ -271,6 +297,64 @@ class Data{
 			return 0;
 		}
 	}
+	
+
+	/**
+	 * 取消关注用户
+	 */
+	private void initData1() {
+		progressBar_sale.setVisibility(View.VISIBLE);
+		downloadsearch1("0");
+	}
+	public void downloadsearch1(String area11){
+		 RequestParams params = new RequestParams();
+	   List<NameValuePair> nameValuePairs=new ArrayList<NameValuePair>(10);
+	   nameValuePairs.add(new BasicNameValuePair("UserID", UserID));
+	   nameValuePairs.add(new BasicNameValuePair("RID", RID));
+	   params.addBodyParameter(nameValuePairs);
+	   HttpUtils http = new HttpUtils();
+	   http.send(HttpRequest.HttpMethod.POST,
+	  		 "http://josie.i3.com.hk/dishtag/json/m_my_restaurants_del.php",
+	           params,
+	           new RequestCallBack<String>() {
+					private String msg;
+
+					@Override
+					public void onFailure(HttpException arg0, String arg1) {
+						
+					}
+					@Override
+					public void onSuccess(ResponseInfo<String> arg0) {
+						JSONObject jsonObject;
+						try {
+							jsonObject = new JSONObject(arg0.result);
+							String string_code = jsonObject.getString("code");
+							 msg = jsonObject.getString("msg");
+							 int  num_code=Integer.valueOf(string_code);
+							 if (num_code==1) {
+								 Toast.makeText(getApplicationContext(), msg, 0).show();
+									progressBar_sale.setVisibility(View.GONE);
+									for(int i=0;i<mDataList.size();i++){
+										if(RID.equals(mDataList.get(i).ID)){
+											mDataList.remove(i);
+										}
+									}
+									myadapter.notifyDataSetChanged();
+							}
+							 else {
+								 Toast.makeText(getApplicationContext(), msg, 0).show();
+									progressBar_sale.setVisibility(View.GONE);
+
+							}
+						} catch (JSONException e) {
+							 Toast.makeText(getApplicationContext(), msg, 0).show();
+							e.printStackTrace();
+						}
+						
+					}
+	   });
+	}
+	
 	OnClickListener listener =new OnClickListener() {
 		
 		@Override

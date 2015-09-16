@@ -31,6 +31,7 @@
        android:layout_height="wrap_content"
        android:layout_centerVertical="true"
        android:textSize="@dimen/smallb"
+       android:id="@+id/mTvw1"
        android:textColor="@color/black"
        android:layout_toLeftOf="@id/mIv2"
        android:layout_toRightOf="@id/mIv1"

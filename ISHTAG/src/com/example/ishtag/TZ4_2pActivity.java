@@ -13,6 +13,7 @@ import java.util.List;
 
 import com.example.fragment.Fragment2.ImageFilterAdapter;
 import com.example.fragment.Fragment2.processImageTask;
+import com.example.ishtag.TZ4_1pActivity.backup;
 
 
 import HaoRan.ImageFilter.AutoAdjustFilter;
@@ -113,6 +114,7 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.Gallery;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 public class TZ4_2pActivity extends Activity {
@@ -125,6 +127,7 @@ public class TZ4_2pActivity extends Activity {
 	private Bitmap bitmap;
 	private ImageView mIvnext;
 	private ImageView mIvt1;
+	private ProgressBar progressBar_sale;
 	public static String SDPATH = Environment.getExternalStorageDirectory()
 			+ "/ISHTAG/";
 
@@ -140,10 +143,11 @@ public class TZ4_2pActivity extends Activity {
 
 		initView();
 		
-		
 	}
 	
 	private void initView() {
+		progressBar_sale =(ProgressBar)this.findViewById(R.id.progressBar_sale);
+		progressBar_sale.setVisibility(View.GONE);
 		
 		mIvnext =(ImageView)this.findViewById(R.id.mIvnext);
 		mIvnext.setOnClickListener(listener);
@@ -151,12 +155,13 @@ public class TZ4_2pActivity extends Activity {
 		mIvt1.setOnClickListener(listener);
 		 gallery = (Gallery) this.findViewById(R.id.galleryFilter);
 		 mIvf2a1 =(ImageView)this.findViewById(R.id.mIvwhatp);
-		  bitmap = BitmapFactory.decodeFile(PATH);
+		//  bitmap = BitmapFactory.decodeFile(PATH);
 		//  Bitmap bitmap1 =compressImage(bitmap);
 		//  SaveBitmap(bitmap1);
-		 mIvf2a1.setImageBitmap(bitmap);
+		// mIvf2a1.setImageBitmap(bitmap);
+			
+		 new backup().execute();
 			LoadImageFilter();
-
 	}
 
 	private void LoadImageFilter() {
@@ -170,9 +175,33 @@ public class TZ4_2pActivity extends Activity {
 			}
 		});
 	}
+	
+	private Bitmap bitmap11;
+	public class backup extends AsyncTask<Void, Void, Void>{
+       @Override
+    protected void onPreExecute() {
+   		progressBar_sale.setVisibility(View.VISIBLE);
+    	super.onPreExecute();
+    }
+		@Override
+		protected Void doInBackground(Void... params) {
+			Bitmap  bitmap1 = BitmapFactory.decodeFile(PATH);
+			  bitmap11 =comp(bitmap1);
+			return null;
+		}
+		@Override
+		protected void onPostExecute(Void result) {
+			  mIvf2a1.setImageBitmap(bitmap11);
+				progressBar_sale.setVisibility(View.GONE);
+		findViewById(R.id.mRr1).setVisibility(View.GONE);
+			super.onPostExecute(result);
+		}
+		
+	}
 
 	private Bitmap resultBitMap;
-
+    
+	
 	public class processImageTask extends AsyncTask<Void, Void, Bitmap> {
 		private IImageFilter filter;
         private Activity activity = null;
@@ -185,7 +214,7 @@ public class TZ4_2pActivity extends Activity {
 		@Override
 		protected void onPreExecute() {
 			super.onPreExecute();
-			dialog = new LoadingDialog(TZ4_2pActivity.this, "正在渲染中...");
+			dialog = new LoadingDialog(TZ4_2pActivity.this, "In rendering...");
 			dialog.show();
 		}
 
@@ -194,8 +223,9 @@ public class TZ4_2pActivity extends Activity {
 			try
 	    	{
 				//Bitmap bitmap = BitmapFactory.decodeResource(activity.getResources(), R.drawable.aa8);
-				Bitmap  bitmap1 = BitmapFactory.decodeFile(PATH);
+/*				Bitmap  bitmap1 = BitmapFactory.decodeFile(PATH);
 				Bitmap  bitmap11 =comp(bitmap1);
+*/				
 				img = new Image(bitmap11);
 				if (filter != null) {
 					img = filter.process(img);
@@ -299,7 +329,7 @@ public class TZ4_2pActivity extends Activity {
 	    	   out.flush();
 	    	   out.close();
 	    	 //  Toast.makeText(getApplicationContext(), "保存成功", Toast.LENGTH_SHORT).show();
-	    	   Intent intent =new Intent(getApplicationContext(),FabuTuPianActivity.class);
+	    	   Intent intent =new Intent(getApplicationContext(),FabuTuPian1Activity.class);
 	    	   intent.putExtra("PATH", SDPATH+"pic"+newDate+".png");
 	    	   startActivity(intent);
     	  } catch (FileNotFoundException e) {
@@ -607,7 +637,7 @@ public class TZ4_2pActivity extends Activity {
 				if(resultBitMap!=null){
 				SaveBitmap(resultBitMap);
 				}else{
-			    	   Intent intent =new Intent(getApplicationContext(),FabuTuPianActivity.class);
+			    	   Intent intent =new Intent(getApplicationContext(),FabuTuPian1Activity.class);
 			    	   intent.putExtra("PATH",PATH);
 			    	   startActivity(intent);
 

@@ -33,6 +33,7 @@
        android:textSize="@dimen/smallb"
        android:textColor="@color/black"
        android:layout_toLeftOf="@id/mIv2"
+       android:id="@+id/mTvw1"
        android:layout_toRightOf="@id/mIv1"
        android:layout_marginLeft="10dp"
        android:text="@string/a53"
