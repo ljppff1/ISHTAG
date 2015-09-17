@@ -117,7 +117,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-public class TZ4_1pActivity extends Activity {
+public class TZ4_1pActivity extends BaseActivity {
 
 	
 
@@ -137,13 +137,10 @@ public class TZ4_1pActivity extends Activity {
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 
 		setContentView(R.layout.t41p);
-		
+
 		PATH =getIntent().getExtras().getString("PATH");
 		//Toast.makeText(getApplicationContext(), PATH, 1).show();
-
-		initView();
-		
-		
+		initView();		
 	}
 	
 	private void initView() {
@@ -172,6 +169,7 @@ public class TZ4_1pActivity extends Activity {
 		protected Void doInBackground(Void... params) {
 			Bitmap  bitmap1 = BitmapFactory.decodeFile(PATH);
 			  bitmap11 =comp(bitmap1);
+			  resultBitMap =bitmap11;
 			return null;
 		}
 		@Override
@@ -199,6 +197,7 @@ public class TZ4_1pActivity extends Activity {
 	}
 
 	private Bitmap resultBitMap;
+	private LoadingDialog dialog1;
 
 	public class processImageTask extends AsyncTask<Void, Void, Bitmap> {
 		private IImageFilter filter;
@@ -304,6 +303,7 @@ public class TZ4_1pActivity extends Activity {
         return bitmap;  
     }  
 	public void save(View view){
+
 		SaveBitmap(resultBitMap);
 	}
 	
@@ -329,10 +329,10 @@ public class TZ4_1pActivity extends Activity {
 	    	   startActivity(intent);
     	  } catch (FileNotFoundException e) {
     	       e.printStackTrace();
+
     	    //   Toast.makeText(getApplicationContext(), "±£¥Ê ß∞‹1", Toast.LENGTH_SHORT).show();
     	  } catch (IOException e) {
    	     //  Toast.makeText(getApplicationContext(), "±£¥Ê ß∞‹2", Toast.LENGTH_SHORT).show();
-
     	       e.printStackTrace();
     	  }
     }
@@ -620,7 +620,13 @@ public class TZ4_1pActivity extends Activity {
 			return imageview;
 		}
 	};
-
+	@Override
+	protected void onResume() {
+ 	   if(dialog1!=null)
+ 	   dialog1.cancel();
+ 	   dialog1=null;
+		super.onResume();
+	}
 	
 	OnClickListener listener =new OnClickListener() {
 		
@@ -628,12 +634,16 @@ public class TZ4_1pActivity extends Activity {
 		public void onClick(View v) {
 			switch (v.getId()) {
 			case R.id.mIvnext:
-				if(resultBitMap!=null){
+				if(resultBitMap!=null&&dialog1==null){
+					dialog1 = new LoadingDialog(TZ4_1pActivity.this, "Saving pictures...");
+
+					dialog1.show();
+
 				SaveBitmap(resultBitMap);
 				}else{
-			    	   Intent intent =new Intent(getApplicationContext(),FabuTuPianActivity.class);
-			    	   intent.putExtra("PATH",PATH);
-			    	   startActivity(intent);
+			    	// //  Intent intent =new Intent(getApplicationContext(),FabuTuPianActivity.class);
+			    	//   intent.putExtra("PATH",PATH);
+			    	//   startActivity(intent);
 
 				}
 				break;

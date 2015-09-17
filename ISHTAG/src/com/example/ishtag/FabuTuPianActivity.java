@@ -50,7 +50,7 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-public class FabuTuPianActivity extends Activity {
+public class FabuTuPianActivity extends BaseActivity {
 
 	private String PATH;
 	private ImageView mIvfbp;

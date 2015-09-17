@@ -9,6 +9,9 @@ import java.util.List;
 import com.example.fragment.Fragment1a;
 import com.example.fragment.Fragment1b;
 import com.example.fragment.Fragment1c;
+import com.example.ishtag1.TZ5_1Activity;
+import com.example.ishtag1.TZ5_1mActivity;
+import com.example.utils.AppManager;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -69,7 +72,7 @@ public class TZ4_1sdActivity extends FragmentActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
-
+         AppManager.getAppManager().addActivity(this);
 		setContentView(R.layout.t41sd);
 		
 		initView();
@@ -178,12 +181,12 @@ class ZxzcAdapter extends FragmentStatePagerAdapter {
 			switch (v.getId()) {
 			case R.id.mTIvt41i:
 				
-				startActivity(new Intent(getApplicationContext(), TZ4_1iActivity.class));
+				startActivity(new Intent(getApplicationContext(), TZ5_1mActivity.class));
 
 				break;
 
 			case R.id.mTIvt41f:
-				startActivity(new Intent(getApplicationContext(), TZ4_1Activity.class));
+				startActivity(new Intent(getApplicationContext(), TZ5_1Activity.class));
 				break;
 			case R.id.mTIvt41h1:
 				startActivity(new Intent(getApplicationContext(), TZ4_1sActivity.class));

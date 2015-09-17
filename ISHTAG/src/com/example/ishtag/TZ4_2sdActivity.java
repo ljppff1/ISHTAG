@@ -9,6 +9,11 @@ import java.util.List;
 import com.example.fragment.Fragment1a;
 import com.example.fragment.Fragment1b;
 import com.example.fragment.Fragment1c;
+import com.example.ishtag1.TZ5_1Activity;
+import com.example.ishtag1.TZ5_1mActivity;
+import com.example.ishtag1.TZ5_2Activity;
+import com.example.ishtag1.TZ5_2mActivity;
+import com.example.utils.AppManager;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -62,14 +67,15 @@ public class TZ4_2sdActivity extends FragmentActivity {
 	public static String SDPATH = Environment.getExternalStorageDirectory()
 			+ "/ISHTAG/";
 	private File tempFile1;
+	private ImageView mTIvt41i;
 	private static final int TAKE_PICTURE = 0x000001;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
-
-		setContentView(R.layout.t41sd);
+        AppManager.getAppManager().addActivity(this);
+		setContentView(R.layout.t42sd);
 		
 		initView();
 		
@@ -83,7 +89,9 @@ public class TZ4_2sdActivity extends FragmentActivity {
 		mTIvt41h1.setOnClickListener(listener);
 		mTIvt41g =(ImageView)this.findViewById(R.id.mTIvt41g);
 		mTIvt41g.setOnClickListener(listener);
-
+		mTIvt41i =(ImageView)this.findViewById(R.id.mTIvt41g);
+		mTIvt41i.setOnClickListener(listener);
+		
 
 		rg1 = (RadioGroup) this.findViewById(R.id.rg1);
 		rb1 = (RadioButton) this.findViewById(R.id.rb1);
@@ -173,8 +181,14 @@ class ZxzcAdapter extends FragmentStatePagerAdapter {
 		@Override
 		public void onClick(View v) {
 			switch (v.getId()) {
+			case R.id.mTIvt41i:
+				
+				startActivity(new Intent(getApplicationContext(), TZ5_2mActivity.class));
+
+				break;
+
 			case R.id.mTIvt41f:
-				startActivity(new Intent(getApplicationContext(), TZ4_2Activity.class));
+				startActivity(new Intent(getApplicationContext(), TZ5_2Activity.class));
 				break;
 			case R.id.mTIvt41h1:
 				startActivity(new Intent(getApplicationContext(), TZ4_2sActivity.class));

@@ -4,6 +4,9 @@ package com.example.ishtag;
 import java.io.File;
 import java.io.IOException;
 
+import com.example.ishtag1.TZ5_2Activity;
+import com.example.ishtag1.TZ5_2mActivity;
+
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
@@ -26,7 +29,7 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class TZ4_2sActivity extends Activity {
+public class TZ4_2sActivity extends BaseActivity {
 
 
 	private GridView mGvm1;
@@ -48,7 +51,7 @@ public class TZ4_2sActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 
-		setContentView(R.layout.t41s);
+		setContentView(R.layout.t42s);
 		
 		initView();
 		
@@ -125,10 +128,10 @@ public class TZ4_2sActivity extends Activity {
 		public void onClick(View v) {
 			switch (v.getId()) {
 			case R.id.mTIvt41i:
-				startActivity(new Intent(getApplicationContext(), TZ4_2iActivity.class));
+				startActivity(new Intent(getApplicationContext(), TZ5_2mActivity.class));
 				break;
 			case R.id.mTIvt41f:
-				startActivity(new Intent(getApplicationContext(), TZ4_2Activity.class));
+				startActivity(new Intent(getApplicationContext(), TZ5_2Activity.class));
 				break;
 			case R.id.mTIvt41h1:
 				//startActivity(new Intent(getApplicationContext(), TZ4_2sActivity.class));

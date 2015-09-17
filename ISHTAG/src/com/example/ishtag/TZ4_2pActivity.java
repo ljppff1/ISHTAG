@@ -117,7 +117,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-public class TZ4_2pActivity extends Activity {
+public class TZ4_2pActivity extends BaseActivity {
 
 	
 
@@ -187,13 +187,17 @@ public class TZ4_2pActivity extends Activity {
 		protected Void doInBackground(Void... params) {
 			Bitmap  bitmap1 = BitmapFactory.decodeFile(PATH);
 			  bitmap11 =comp(bitmap1);
+            resultBitMap =bitmap11;
 			return null;
 		}
 		@Override
 		protected void onPostExecute(Void result) {
+			if(mIvf2a1!=null){
 			  mIvf2a1.setImageBitmap(bitmap11);
+			
 				progressBar_sale.setVisibility(View.GONE);
 		findViewById(R.id.mRr1).setVisibility(View.GONE);
+			}
 			super.onPostExecute(result);
 		}
 		
@@ -329,13 +333,16 @@ public class TZ4_2pActivity extends Activity {
 	    	   out.flush();
 	    	   out.close();
 	    	 //  Toast.makeText(getApplicationContext(), "保存成功", Toast.LENGTH_SHORT).show();
+
 	    	   Intent intent =new Intent(getApplicationContext(),FabuTuPian1Activity.class);
 	    	   intent.putExtra("PATH", SDPATH+"pic"+newDate+".png");
 	    	   startActivity(intent);
     	  } catch (FileNotFoundException e) {
     	       e.printStackTrace();
+
     	    //   Toast.makeText(getApplicationContext(), "保存失败1", Toast.LENGTH_SHORT).show();
     	  } catch (IOException e) {
+
    	     //  Toast.makeText(getApplicationContext(), "保存失败2", Toast.LENGTH_SHORT).show();
 
     	       e.printStackTrace();
@@ -353,7 +360,13 @@ public class TZ4_2pActivity extends Activity {
         }
 }
 
-	
+	@Override
+	protected void onResume() {
+ 	   if(dialog1!=null)
+ 	   dialog1.cancel();
+ 	   dialog1=null;
+		super.onResume();
+	}
 	public class ImageFilterAdapter extends BaseAdapter {
 		private class FilterInfo {
 			public int filterID;
@@ -626,20 +639,25 @@ public class TZ4_2pActivity extends Activity {
 			return imageview;
 		}
 	};
+	private LoadingDialog dialog1;
 
 	
 	OnClickListener listener =new OnClickListener() {
 		
+
 		@Override
 		public void onClick(View v) {
 			switch (v.getId()) {
 			case R.id.mIvnext:
-				if(resultBitMap!=null){
+				if(resultBitMap!=null&&dialog1==null){
+					dialog1 = new LoadingDialog(TZ4_2pActivity.this, "Saving pictures...");
+					dialog1.show();
+
 				SaveBitmap(resultBitMap);
 				}else{
-			    	   Intent intent =new Intent(getApplicationContext(),FabuTuPian1Activity.class);
-			    	   intent.putExtra("PATH",PATH);
-			    	   startActivity(intent);
+			    	//   Intent intent =new Intent(getApplicationContext(),FabuTuPian1Activity.class);
+			    	//   intent.putExtra("PATH",PATH);
+			    	//   startActivity(intent);
 
 				}
 				break;

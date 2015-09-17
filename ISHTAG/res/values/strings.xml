@@ -121,5 +121,8 @@
               <string name="a103">PLEASE WRITE A CAPTION</string>
               <string name="a103a">PLEASE WRITE DISH DETAILS</string>
               <string name="a104">Picture being loaded</string>
+              <string name="a105">Press once to exit the program</string>
+              <string name="a106">ADAM RILEY</string>
+              <string name="a107">Send</string>
               
 </resources>

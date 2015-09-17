@@ -9,6 +9,7 @@ import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.example.ishtag1.TZ5_1Activity;
 import com.example.utils.AppManager;
 import com.lidroid.xutils.HttpUtils;
 import com.lidroid.xutils.exception.HttpException;
@@ -202,7 +203,7 @@ public void downloadsearch(String area11){
 										editor.putString("UserGender",UserGender); 
 										editor.commit(); 
 										
-											startActivity(new Intent(getApplicationContext(), TZ4_1Activity.class));
+											startActivity(new Intent(getApplicationContext(), TZ5_1Activity.class));
 			                                AppManager.getAppManager().finishActivityJob3();
 
 						 }

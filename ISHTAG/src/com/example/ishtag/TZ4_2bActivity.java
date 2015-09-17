@@ -36,13 +36,13 @@ public class TZ4_2bActivity extends Activity {
 	private ImageView mTIvt41e;
 	private GridView mGvm1;
 	private Myadapter adapter;
+	private GridView mGvm2;
+	private GridView mGvm3;
+	private GridView mGvm4;
 
 	public static String SDPATH = Environment.getExternalStorageDirectory()
 			+ "/ISHTAG/";
 	private File tempFile1;
-	private GridView mGvm2;
-	private GridView mGvm3;
-	private GridView mGvm4;
 	private ImageView mTIvt41i;
 	private static final int TAKE_PICTURE = 0x000001;
 

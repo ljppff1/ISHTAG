@@ -82,18 +82,15 @@
         />
         </RelativeLayout>
         </RelativeLayout>
-        <TextView 
+        <ImageView 
         android:layout_width="fill_parent"
-        android:layout_height="15dp"
-        android:layout_gravity="center"
-        android:text="@string/a26"
-        android:layout_marginTop="8dp"
-        android:textColor="@color/black"
+        android:layout_height="10dp"
+        android:src="@drawable/t50"
         />
         <RelativeLayout 
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:background="@color/black"
+            android:background="@color/white"
             >
               <GridView 
                   android:layout_margin="0.5dp"
