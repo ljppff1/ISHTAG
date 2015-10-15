@@ -20,9 +20,9 @@
          >
          <ImageView 
              android:layout_width="50dp"
-             android:layout_height="fill_parent"
+             android:layout_height="wrap_content"
              android:layout_centerVertical="true"
-             android:src="@drawable/t31"
+             android:src="@drawable/aaad93"
              android:id="@+id/mIvt1"
              />
          <TextView 
@@ -30,7 +30,8 @@
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"
              android:text="@string/a64"
-             android:textColor="@color/aamy1"
+             android:textColor="@color/white"
+             android:id="@+id/mTvww1"
              android:textSize="@dimen/smallc"
              />
          <ImageView 
@@ -38,7 +39,7 @@
              android:layout_height="wrap_content"
              android:layout_centerVertical="true"
              android:layout_alignParentRight="true"
-             android:src="@drawable/t32"
+             android:src="@drawable/aaad92"
              android:id="@+id/mIvnext"
              />
      </RelativeLayout>

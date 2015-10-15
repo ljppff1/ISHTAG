@@ -1,0 +1,52 @@
+      <LinearLayout 
+               xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@color/white"
+        android:orientation="vertical"
+        >      
+         <RadioGroup
+                android:id="@+id/rg1"
+                android:layout_width="fill_parent"
+                android:layout_height="45.0dip"
+                android:orientation="horizontal" >
+
+                <RadioButton
+                    android:id="@+id/rb1"
+                    android:layout_width="0.0dip"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1.0"
+                    android:background="@drawable/radio_group_selector"
+                    android:button="@null"
+                    android:checked="true"
+                    
+                    android:gravity="center"
+                    android:text="@string/a70"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/smallb" />
+                <View 
+                    android:layout_width="1dp"
+                    android:layout_height="fill_parent"
+                    android:background="@color/black"
+                    />
+                <RadioButton
+                    android:id="@+id/rb2"
+                    android:layout_width="0.0dip"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1.0"
+                    android:background="@drawable/radio_group_selector"
+                    android:button="@null"
+                    android:gravity="center"
+                    android:text="@string/a71"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/smallb" /> 
+    </RadioGroup>
+                            <android.support.v4.view.ViewPager
+            android:id="@+id/vp1"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" />
+                
+   </LinearLayout>
+
+        
+

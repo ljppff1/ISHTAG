@@ -34,7 +34,7 @@
         
         <Button 
                         android:layout_width="fill_parent"
-            android:background="@color/black"
+            android:background="@drawable/aa"
             android:textColor="@color/white"
             android:textSize="20sp"
             android:layout_marginTop="40dp"
@@ -45,7 +45,7 @@
             />
                 <Button 
                         android:layout_width="fill_parent"
-            android:background="@color/black"
+            android:background="@drawable/aa"
             android:textColor="@color/white"
             android:textSize="20sp"
             android:layout_marginTop="40dp"

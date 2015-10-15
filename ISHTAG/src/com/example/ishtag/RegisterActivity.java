@@ -3,6 +3,8 @@ package com.example.ishtag;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
@@ -11,6 +13,7 @@ import org.json.JSONObject;
 
 import com.example.ishtag1.TZ5_1Activity;
 import com.example.utils.AppManager;
+import com.example.utils.TypeFace;
 import com.lidroid.xutils.HttpUtils;
 import com.lidroid.xutils.exception.HttpException;
 import com.lidroid.xutils.http.RequestParams;
@@ -24,6 +27,8 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.InputFilter;
+import android.text.Spanned;
 import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -55,6 +60,11 @@ public class RegisterActivity extends BaseActivity {
 	private RadioButton mRb1;
 	private RadioButton mRb2;
     private int femailormail=0;
+    
+    private TextView m1,m2,m3,m4,m5,m6;
+	private TextView tt1[]=new TextView[]{m1,m2,m3,m4,m5,m6};
+    int id[] = new int[] { R.id.mty1, R.id.mty2, R.id.mty3, R.id.mty4, R.id.mty5, R.id.mty6 };
+
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -64,7 +74,11 @@ public class RegisterActivity extends BaseActivity {
 		setContentView(R.layout.register);
 		
 		initView();
-		
+        for (int i = 0; i < tt1.length; i++) {
+        	tt1[i] = (TextView) this.findViewById(id[i]);
+        	tt1[i] .setTypeface (new TypeFace().getTypeFace2(getApplicationContext()));
+        }
+
 		
 	}
 
@@ -95,14 +109,62 @@ public class RegisterActivity extends BaseActivity {
 		mRlr1.setOnClickListener(listener);
 		mTvre6 =(TextView)this.findViewById(R.id.mTvre6);
 		mTvre6.setOnClickListener(listener);
-		
+		final int mMaxLenth = 31;//mMaxLenth可以动态改变
+		final int mMaxLenth1 = 21;//mMaxLenth可以动态改变
+
+		InputFilter[] FilterArray = new InputFilter[1];
+		FilterArray[0] = new InputFilter() {
+		@Override
+		public CharSequence filter (CharSequence source, int start, int end, 
+		Spanned dest, int dstart, int dend){
+		boolean bInvlid = false;
+		int sourceLen = source.toString().length();
+		int destLen = dest.toString().length();
+		if (sourceLen + destLen > mMaxLenth) {
+		return ""; }
+		return source;
+		}
+		};
+		InputFilter[] FilterArray1 = new InputFilter[1];
+		FilterArray1[0] = new InputFilter() {
+		@Override
+		public CharSequence filter (CharSequence source, int start, int end, 
+		Spanned dest, int dstart, int dend){
+		boolean bInvlid = false;
+		int sourceLen = source.toString().length();
+		int destLen = dest.toString().length();
+		if (sourceLen + destLen > mMaxLenth1) {
+		return ""; }
+		return source;
+		}
+		};
+
 		mEt1=(EditText)this.findViewById(R.id.mEt1);
 		mEt2=(EditText)this.findViewById(R.id.mEt2);
 		mEt3=(EditText)this.findViewById(R.id.mEt3);
 		mEt4=(EditText)this.findViewById(R.id.mEt4);
 		mEt5=(EditText)this.findViewById(R.id.mEt5);
+		mEt1.setFilters(FilterArray);
+		mEt4.setFilters(FilterArray1);
+		mEt5.setFilters(FilterArray1);
 		
+		mEt1.setTypeface (new TypeFace().getTypeFace2(getApplicationContext()));
+		mEt2.setTypeface (new TypeFace().getTypeFace2(getApplicationContext()));
+		mEt3.setTypeface (new TypeFace().getTypeFace2(getApplicationContext()));
+		mEt4.setTypeface (new TypeFace().getTypeFace2(getApplicationContext()));
+		mEt5.setTypeface (new TypeFace().getTypeFace2(getApplicationContext()));
+		mTvre6.setTypeface (new TypeFace().getTypeFace2(getApplicationContext()));
+		mRb1.setTypeface (new TypeFace().getTypeFace2(getApplicationContext()));
+		mRb2.setTypeface (new TypeFace().getTypeFace2(getApplicationContext()));
+
 	}
+	public static boolean isEmail(String email){     
+	     String str="^([a-zA-Z0-9]*[-_]?[a-zA-Z0-9]+)*@([a-zA-Z0-9]*[-_]?[a-zA-Z0-9]+)+[\\.][A-Za-z]{2,3}([\\.][A-Za-z]{2})?$";
+	        Pattern p = Pattern.compile(str);     
+	        Matcher m = p.matcher(email);     
+	        return m.matches();     
+	    }
+
 
 	OnClickListener listener =new OnClickListener() {
 		
@@ -127,6 +189,10 @@ public class RegisterActivity extends BaseActivity {
 					Toast.makeText(getApplicationContext(), R.string.a92, 0).show();
 				}else if(!mEt4.getEditableText().toString().equals(mEt5.getEditableText().toString())){
 					Toast.makeText(getApplicationContext(), R.string.a93, 0).show();
+				}else if(!isEmail(mEt2.getEditableText().toString())){
+					Toast.makeText(getApplicationContext(), R.string.a951a, 0).show();
+				}else if(mEt4.getEditableText().toString().length()<6){
+					Toast.makeText(getApplicationContext(), R.string.a112, 0).show();
 				}else{
 					initData();
 				}
@@ -183,8 +249,8 @@ public void downloadsearch(String area11){
 						 if (num_code==1) {
 							 //保存到本地
 							 JSONObject array = jsonObject.getJSONObject("data");
-							 Toast.makeText(getApplicationContext(), msg, 0).show();
-								progressBar_sale.setVisibility(View.GONE);
+							 Toast.makeText(getApplicationContext(), R.string.a111, 1).show();
+				   		     progressBar_sale.setVisibility(View.GONE);
 								
 								String UserID = array.getString("UserID");
 								String UserName = array.getString("UserName");

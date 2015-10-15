@@ -1,0 +1,69 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:layout_height="fill_parent"
+     >
+<ImageView 
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.5"
+        android:id="@+id/mIvwhat"
+        android:scaleType="fitXY"
+        android:src="@drawable/t28"
+        />
+
+
+    <RelativeLayout 
+        android:layout_marginTop="10dp"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="8"
+        >
+          <ListView 
+            android:layout_width="fill_parent"
+            android:dividerHeight="30dp"
+          android:background="@android:color/transparent"
+            android:layout_height="fill_parent"
+            android:id="@+id/mLv"
+            ></ListView>
+        
+              <RelativeLayout
+                android:id="@+id/edittext_layout"
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:background="@color/gray1"
+                android:layout_alignParentBottom="true"
+            >
+
+                <Button 
+                    android:layout_width="wrap_content"
+                    android:layout_height="38dp"
+                    android:text="@string/a107"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginLeft="5dp"
+                    android:id="@+id/mbtsend"
+                   
+                    
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/button1"
+                    android:textColor="@color/white"
+                    />
+                                <com.llew.e.clear.view.wedgit.ClearEditText 
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                     android:id="@+id/mEt51"                   
+                      android:layout_centerVertical="true"
+                     android:layout_toLeftOf="@id/mbtsend"
+                      android:textColor="@color/black"
+                     
+                    />
+                
+                </RelativeLayout>
+</RelativeLayout>
+
+
+
+</LinearLayout>

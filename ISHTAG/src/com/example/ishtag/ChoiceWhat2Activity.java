@@ -1,5 +1,7 @@
 package com.example.ishtag;
 
+import com.example.utils.TypeFace;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -32,7 +34,9 @@ public class ChoiceWhat2Activity extends BaseActivity {
 		mBtnCW1.setOnClickListener(listener);
 		mBtnCW2 =(Button)this.findViewById(R.id.mBtnCW2);
 		mBtnCW2.setOnClickListener(listener);
-		
+		mBtnCW1.setTypeface (new TypeFace().getTypeFace2(getApplicationContext()));
+		mBtnCW2.setTypeface (new TypeFace().getTypeFace2(getApplicationContext()));
+
 		
 	}
 

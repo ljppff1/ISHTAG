@@ -6,10 +6,12 @@ import java.io.IOException;
 
 import com.example.ishtag1.TZ5_1Activity;
 import com.example.ishtag1.TZ5_1mActivity;
+import com.example.utils.TypeFace;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -25,8 +27,10 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 public class TZ4_1sActivity extends BaseActivity {
@@ -44,6 +48,10 @@ public class TZ4_1sActivity extends BaseActivity {
 			+ "/ISHTAG/";
 	private File tempFile1;
 	private ImageView mTIvt41i;
+	private TextView mEttt1;
+	private TextView mTvww1;
+	private Typeface face1;
+	private RelativeLayout mRlse;
 	private static final int TAKE_PICTURE = 0x000001;
 
 	@Override
@@ -59,6 +67,15 @@ public class TZ4_1sActivity extends BaseActivity {
 	}
 
 	private void initView() {
+		mRlse =(RelativeLayout)this.findViewById(R.id.mRlse);
+		mRlse.setOnClickListener(listener);
+
+		mEttt1 =(TextView)this.findViewById(R.id.mEttt1);
+		mTvww1 =(TextView)this.findViewById(R.id.mTvww1);
+		face1 =new TypeFace().getTypeFace2(getApplicationContext());
+		mEttt1.setTypeface(face1);
+		mTvww1.setTypeface(face1);
+
 		mGvm1 =(GridView)this.findViewById(R.id.mGvm1);
 		adapter= new Myadapter();
 		mGvm1.setAdapter(adapter);
@@ -67,7 +84,7 @@ public class TZ4_1sActivity extends BaseActivity {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
-				startActivity(new Intent(getApplicationContext(), TZ4_1sdActivity.class));
+				startActivity(new Intent(getApplicationContext(), CaiPin1.class));
 			}
 		});
 		mTIvt41f =(ImageView)this.findViewById(R.id.mTIvt41f);
@@ -127,6 +144,10 @@ public class TZ4_1sActivity extends BaseActivity {
 		@Override
 		public void onClick(View v) {
 			switch (v.getId()) {
+			case R.id.mRlse:
+				startActivity(new Intent(getApplicationContext(), TZ4_2sdActivity.class));
+				break;
+
 			case R.id.mTIvt41i:
 				
 				startActivity(new Intent(getApplicationContext(), TZ5_1mActivity.class));
@@ -173,14 +194,18 @@ public class TZ4_1sActivity extends BaseActivity {
 	}
 
 
+@SuppressLint("NewApi")
 protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 	switch (requestCode) {
 	case TAKE_PICTURE:
+        if(tempFile1.getTotalSpace()!=0){   
+
 		//	Bitmap bitmap = BitmapFactory.decodeFile(tempFile1.getPath());
 		//Toast.makeText(getApplicationContext(), tempFile1.getPath(), 1).show();
             Intent intent =new Intent(getApplicationContext(), TZ4_1pActivity.class);
             intent.putExtra("PATH", tempFile1.getPath());
             startActivity(intent);
+        }
 		break;
 	}
 }

@@ -1,0 +1,29 @@
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+ >
+        <RelativeLayout 
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="@color/white"
+            >
+<GridView 
+                  android:layout_margin="0.5dp"
+      android:layout_width="fill_parent"
+      android:layout_height="fill_parent"
+      android:id="@+id/mGvm1"
+      android:verticalSpacing="0.5dp"
+      android:horizontalSpacing="0.5dp"
+      android:numColumns="4"
+      ></GridView>        </RelativeLayout>
+            <ProgressBar
+            android:id="@+id/progressBar_sale"
+            android:layout_width="wrap_content"
+            android:visibility="gone"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true" />
+</RelativeLayout>

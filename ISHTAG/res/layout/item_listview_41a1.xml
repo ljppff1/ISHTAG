@@ -48,6 +48,7 @@
        android:layout_height="wrap_content"
        android:layout_centerVertical="true"
        android:textSize="@dimen/smalla"
+       android:id="@+id/mTv2"
        android:textColor="@color/black"
        android:layout_marginLeft="10dp"
        android:text="@string/a56"

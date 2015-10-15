@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">ISHTAG</string>
+    <string name="app_name">DISHTAG</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="a1">USERNAME</string>
         <string name="a2">PASSWORD</string>
-        <string name="a3">NEW DISHTAGGER</string>
+        <string name="a3">New profile</string>
         <string name="a31">LOGIN</string>
         <string name="a31a1">LOGIN-RE</string>
         <string name="a4">I\'M A DISHTAGGER</string>
@@ -16,8 +16,8 @@
                 <string name="a8">NEW PASSWORD</string>
                 <string name="a9">RE-ENTER PASSWORD</string>
                 <string name="a10">BIRTHDAY</string>
-                <string name="a11">FEMAIL</string>
-              <string name="a12">MAIL</string>
+                <string name="a11">FEMALE</string>
+              <string name="a12">MALE</string>
               <string name="a13">READY TO DISHTAG!</string>
               <string name="a14">保存</string>
               <string name="a15">tag the dish</string>
@@ -27,7 +27,7 @@
               <string name="a17">TAG FRIENDS</string>
               <string name="a18">TAG RESTAURANT</string>
          <string name="a19">RESTAURANT NAME</string>
-         <string name="a20">BRANCE</string>
+         <string name="a20">BRANCH</string>
          <string name="a21">EMAIL</string>
          <string name="a22">RE-ENTER EMAIL</string>
          <string name="a23">NEW PASSWORD</string>
@@ -35,7 +35,7 @@
          <string name="a25">GET DISHTAGGED</string>
          <string name="a26">--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</string>
          <string name="a27">ADAM RILEY</string>
-         <string name="a28">JSOPPRESSATA PICCANTE</string>
+         <string name="a28">SOPPRESSATA PICCANTE</string>
          <string name="a281">]</string>
          <string name="a29">\@MOTORINO</string>
          <string name="a30">with Raffaela Bichiri and 3 other</string>
@@ -57,7 +57,7 @@
 <string name="a46">BURGER JUNKIE</string>
 <string name="a47">NUMBER OF DISHTAGS:</string>
 <string name="a48">4</string>
-<string name="a49">POPULAR DISHTAGS</string>
+<string name="a49">MOST POPULAR DISHTAGS</string>
 <string name="a50">DISHTAG PLACES</string>
 <string name="a51">PLACE NAME</string>
 <string name="a51a">left a comment on your dishtag @MOTORINO</string>
@@ -68,10 +68,10 @@
 <string name="a55">DISHTAGGIN\' ACTIVITY</string>
 <string name="a56">started following you</string>
 <string name="a57">EXPLORE ...</string>
-<string name="a58">ISHTAGS RECOMMENDED FOR YOU</string>
+<string name="a58">DISHTAGS RECOMMENDED FOR YOU</string>
 <string name="a59">CHEESEBURGER</string>
-<string name="a60">] ISHTAGS</string>
-<string name="a61">] ISHTAGGERS</string>
+<string name="a60">] DISHTAGS</string>
+<string name="a61">] DISHTAGGERS</string>
 <string name="a62">PLACES</string>
 <string name="a63">DJIBOUTLL\'S DISHTAGS</string>
 <string name="a64">FILTERS</string>
@@ -103,7 +103,7 @@
 <string name="a87">DRINKS</string>
 <string name="a88">Selection date Please</string>
 <string name="a89">Sure</string>
-<string name="a90">PLEASE ENTER USERNAME</string>
+<string name="a90">PLEASE ENTER EMAIL</string>
 <string name="a90a">PLEASE ENTER RESTAURANT NAME</string>
 <string name="a91">PLEASE ENTER EMAIL</string>
 <string name="a92">TWO INPUT EMAIL DIFFERENT</string>
@@ -111,6 +111,7 @@
 <string name="a94">PLEASE ENTER RE-EMAIL</string>
 <string name="a95">PLEASE ENTER NEW PASSWORD</string>
 <string name="a951">PLEASE ENTER PASSWORD</string>
+<string name="a951a">PLEASE ENTER A CORRECT EMAIL ADDRESS</string>
 <string name="a96">PLEASE ENTER RE-ENTER PASSWORD</string>
 <string name="a97">PLEASE ENTER BIRTHDAY</string>
 <string name="a98">PLEASE ENTER BRANCE</string>
@@ -123,6 +124,12 @@
               <string name="a104">Picture being loaded</string>
               <string name="a105">Press once to exit the program</string>
               <string name="a106">ADAM RILEY</string>
+              <string name="a106a">DJBOUTLL</string>
               <string name="a107">Send</string>
+              <string name="a108">Upload fail</string>
+              <string name="a109">uploading...</string>
+              <string name="a110">Sharing</string>
+              <string name="a111"> You’re one step away from Dishtag, please verify  your email address through the link that has been sent to your inbox!</string>
+                           <string name="a112">Please enter at least 6 passwords</string>
               
 </resources>

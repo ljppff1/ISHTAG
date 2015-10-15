@@ -7,11 +7,11 @@
     <dimen name="ma1">4dp</dimen>
             <dimen name="smalle">23dp</dimen>
     
-    <dimen name="smalla">16dp</dimen>
-    <dimen name="smalla1">14dp</dimen>
-    <dimen name="smallb">18dp</dimen>
-        <dimen name="smallc">20dp</dimen>
-        <dimen name="smalld">22dp</dimen>
+    <dimen name="smalla">14dp</dimen>
+    <dimen name="smalla1">12dp</dimen>
+    <dimen name="smallb">16dp</dimen>
+        <dimen name="smallc">18dp</dimen>
+        <dimen name="smalld">20dp</dimen>
         <dimen name="paddingh1">170dp</dimen>
         <dimen name="paddingh2">45dp</dimen>
         

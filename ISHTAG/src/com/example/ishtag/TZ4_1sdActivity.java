@@ -9,13 +9,16 @@ import java.util.List;
 import com.example.fragment.Fragment1a;
 import com.example.fragment.Fragment1b;
 import com.example.fragment.Fragment1c;
+import com.example.fragment.Fragment51m1;
 import com.example.ishtag1.TZ5_1Activity;
 import com.example.ishtag1.TZ5_1mActivity;
 import com.example.utils.AppManager;
+import com.example.utils.TypeFace;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -38,6 +41,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.RadioButton;
@@ -54,7 +58,7 @@ public class TZ4_1sdActivity extends FragmentActivity {
 	private RadioButton rb3;
 	private ViewPager vp;
 	private ArrayList<Fragment> list;
-	private Fragment1a fa;
+	private Fragment51m1 fa;
 	private Fragment1b fb;
 	private Fragment1c fc;
 	private ImageView mTIvt41h1;
@@ -66,6 +70,9 @@ public class TZ4_1sdActivity extends FragmentActivity {
 			+ "/ISHTAG/";
 	private File tempFile1;
 	private ImageView mTIvt41i;
+	private EditText mTvss1;
+	private Typeface face1;
+	private Typeface face2;
 	private static final int TAKE_PICTURE = 0x000001;
 
 	@Override
@@ -74,13 +81,17 @@ public class TZ4_1sdActivity extends FragmentActivity {
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
          AppManager.getAppManager().addActivity(this);
 		setContentView(R.layout.t41sd);
-		
+		face1 =new TypeFace().getTypeFace2(getApplicationContext());
+		face2 =new TypeFace().getTypeFace1(getApplicationContext());
+
 		initView();
 		
 		
 	}
 
 	private void initView() {
+		mTvss1 =(EditText)this.findViewById(R.id.mTvss1);
+		
 		mTIvt41f =(ImageView)this.findViewById(R.id.mTIvt41f);
 		mTIvt41f.setOnClickListener(listener);
 		mTIvt41h1 =(ImageView)this.findViewById(R.id.mTIvt41h1);
@@ -95,6 +106,11 @@ public class TZ4_1sdActivity extends FragmentActivity {
 		rb1 = (RadioButton) this.findViewById(R.id.rb1);
 		rb2 = (RadioButton) this.findViewById(R.id.rb2);
 		rb3 = (RadioButton) this.findViewById(R.id.rb3);
+		rb1.setTypeface(face1);
+		rb2.setTypeface(face1);
+		rb3.setTypeface(face1);
+		mTvss1.setTypeface(face1);
+
 		vp=(ViewPager)this.findViewById(R.id.vp1);
 	    vp.setOnPageChangeListener(new OnPageChangeListener() {
 			
@@ -125,7 +141,7 @@ public class TZ4_1sdActivity extends FragmentActivity {
 		});
 
 		list = new ArrayList<Fragment>();
-		 fa=new Fragment1a();
+		 fa=new Fragment51m1();
 		 fb=new Fragment1b();
 		 fc=new Fragment1c();
 		list.add(fa);
@@ -226,14 +242,18 @@ class ZxzcAdapter extends FragmentStatePagerAdapter {
 	}
 
 
+@SuppressLint("NewApi")
 protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 	switch (requestCode) {
 	case TAKE_PICTURE:
+        if(tempFile1.getTotalSpace()!=0){   
+
 		//	Bitmap bitmap = BitmapFactory.decodeFile(tempFile1.getPath());
 		//Toast.makeText(getApplicationContext(), tempFile1.getPath(), 1).show();
             Intent intent =new Intent(getApplicationContext(), TZ4_1pActivity.class);
             intent.putExtra("PATH", tempFile1.getPath());
             startActivity(intent);
+        }
 		break;
 	}
 }

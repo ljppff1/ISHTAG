@@ -3,38 +3,42 @@ package com.example.ishtag;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.app.Activity;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.Typeface;
+import android.os.Bundle;
+import android.os.Environment;
+import android.text.InputFilter;
+import android.text.Spanned;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.Window;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.Toast;
+
 import com.example.ishtag1.TZ5_1Activity;
 import com.example.ishtag1.TZ5_2Activity;
 import com.example.utils.AppManager;
+import com.example.utils.TypeFace;
 import com.lidroid.xutils.HttpUtils;
 import com.lidroid.xutils.exception.HttpException;
 import com.lidroid.xutils.http.RequestParams;
 import com.lidroid.xutils.http.ResponseInfo;
 import com.lidroid.xutils.http.callback.RequestCallBack;
 import com.lidroid.xutils.http.client.HttpRequest;
-
-import android.app.Activity;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.os.Bundle;
-import android.os.Environment;
-import android.text.TextUtils;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.Window;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import android.widget.Toast;
 
 public class LoginActivity extends BaseActivity {
 
@@ -45,6 +49,8 @@ public class LoginActivity extends BaseActivity {
 	private ProgressBar progressBar_sale;
 	private EditText mEt1;
 	private EditText mEt2;
+	private Typeface face1;
+	private Typeface face2;
 	public static String SDPATH = Environment.getExternalStorageDirectory()
 			+ "/ISHTAG";
 
@@ -53,6 +59,9 @@ public class LoginActivity extends BaseActivity {
 		super.onCreate(savedInstanceState);
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.login);
+		face1 =new TypeFace().getTypeFace2(getApplicationContext());
+		face2 =new TypeFace().getTypeFace1(getApplicationContext());
+
 		 makeRootDirectory(SDPATH);
 		initView();
 		
@@ -69,6 +78,8 @@ public class LoginActivity extends BaseActivity {
 
         }
 }
+    
+    
 
 	private void initView() {
 		progressBar_sale =(ProgressBar)this.findViewById(R.id.progressBar_sale);
@@ -78,7 +89,43 @@ public class LoginActivity extends BaseActivity {
 
 		
 		mEt1 =(EditText)this.findViewById(R.id.mEt1);
+		final int mMaxLenth = 31;//mMaxLenth可以动态改变
+		final int mMaxLenth1 = 21;//mMaxLenth可以动态改变
+
+		InputFilter[] FilterArray = new InputFilter[1];
+		FilterArray[0] = new InputFilter() {
+		@Override
+		public CharSequence filter (CharSequence source, int start, int end, 
+		Spanned dest, int dstart, int dend){
+		boolean bInvlid = false;
+		int sourceLen = source.toString().length();
+		int destLen = dest.toString().length();
+		if (sourceLen + destLen > mMaxLenth) {
+		return ""; }
+		return source;
+		}
+		};
+		InputFilter[] FilterArray1 = new InputFilter[1];
+		FilterArray1[0] = new InputFilter() {
+		@Override
+		public CharSequence filter (CharSequence source, int start, int end, 
+		Spanned dest, int dstart, int dend){
+		boolean bInvlid = false;
+		int sourceLen = source.toString().length();
+		int destLen = dest.toString().length();
+		if (sourceLen + destLen > mMaxLenth1) {
+		return ""; }
+		return source;
+		}
+		};
+
+
+
 		mEt2 =(EditText)this.findViewById(R.id.mEt2);
+		mEt1.setFilters(FilterArray);
+		mEt2.setFilters(FilterArray1);
+		mEt1.setTypeface(face1);
+		mEt2.setTypeface(face1);
 		mEt1.setText(UserEmail);
 		mBtnLogin =(Button)this.findViewById(R.id.mBtnLogin);
 		mBtnLogin.setOnClickListener(listener);
@@ -86,8 +133,16 @@ public class LoginActivity extends BaseActivity {
 		mBtnLogin1.setOnClickListener(listener);
 		mBtnLogin2 =(Button)this.findViewById(R.id.mBtnLogin2);
 		mBtnLogin2.setOnClickListener(listener);
-		
+		mBtnLogin.setTypeface(face2);
+		mBtnLogin1.setTypeface(face2);
+		mBtnLogin2.setTypeface(face2);
+		mEt1.setTypeface (new TypeFace().getTypeFace2(getApplicationContext()));
+		mEt2.setTypeface (new TypeFace().getTypeFace2(getApplicationContext()));
+		mBtnLogin.setTypeface (new TypeFace().getTypeFace2(getApplicationContext()));
+		mBtnLogin1.setTypeface (new TypeFace().getTypeFace2(getApplicationContext()));
+		mBtnLogin2.setTypeface (new TypeFace().getTypeFace2(getApplicationContext()));
 
+		
 	}
 	
 	private void initData() {
@@ -182,6 +237,12 @@ public class LoginActivity extends BaseActivity {
 					}
 	   });
 	}
+	public static boolean isEmail(String email){     
+	     String str="^([a-zA-Z0-9]*[-_]?[a-zA-Z0-9]+)*@([a-zA-Z0-9]*[-_]?[a-zA-Z0-9]+)+[\\.][A-Za-z]{2,3}([\\.][A-Za-z]{2})?$";
+	        Pattern p = Pattern.compile(str);     
+	        Matcher m = p.matcher(email);     
+	        return m.matches();     
+	    }
 
 	OnClickListener listener =new OnClickListener() {
 		
@@ -193,6 +254,10 @@ public class LoginActivity extends BaseActivity {
 					Toast.makeText(getApplicationContext(), R.string.a90, 0).show();
 				}else if(TextUtils.isEmpty(mEt2.getEditableText().toString())){
 					Toast.makeText(getApplicationContext(), R.string.a951, 0).show();
+				}else if(!isEmail(mEt1.getEditableText().toString())){
+					Toast.makeText(getApplicationContext(), R.string.a951a, 0).show();
+				}else if(mEt2.getEditableText().toString().length()<6){
+					Toast.makeText(getApplicationContext(), R.string.a112, 0).show();
 				}else{
 					initData();
 				}

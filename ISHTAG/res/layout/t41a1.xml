@@ -257,7 +257,7 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="fill_parent"
-            android:src="@drawable/t12"
+            android:src="@drawable/tt12"
             android:id="@+id/mTIvt41g"
             />   <View 
                         android:layout_width="0dp"
